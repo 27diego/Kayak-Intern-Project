@@ -1,0 +1,14 @@
+.header {
+  background: linear-gradient(#ff690f, #e8381b);
+  padding: 1.12rem 20rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  &__description {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: 3.7rem;
+  }
+}

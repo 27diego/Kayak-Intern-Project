@@ -1,0 +1,71 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+.form {
+  position: absolute;
+  z-index: 100;
+
+  display: grid;
+  grid-template-columns: repeat(3, 23.9rem) 5.4rem;
+  grid-column-gap: 2rem;
+
+  &__btn {
+    border: none;
+    background: linear-gradient(#ff690f, #e8381b);
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &__icon {
+      color: #fff;
+    }
+  }
+}
+
+.dropdown-container {
+  display: block;
+  background-color: #f1f4f7;
+  width: 25rem;
+  height: 5.4rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &__placeholder {
+    font-size: 1.5rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    span {
+      margin-left: 1rem;
+    }
+  }
+
+  .dropdown {
+    background-color: #fff;
+    color: #6d8494;
+    font-size: 1.5rem;
+    overflow-y: scroll;
+
+    &__item {
+      height: 4rem;
+      display: flex;
+      align-items: center;
+      &:hover {
+        background-color: #d9e1e8;
+      }
+
+      span {
+        margin-left: 1rem;
+      }
+    }
+  }
+}

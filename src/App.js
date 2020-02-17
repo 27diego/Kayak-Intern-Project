@@ -1,26 +1,55 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Header from "./components/header/Header";
+import TourHeader from "./components/tourHeader/TourHeader";
+import Form from "./components/form/Form";
+import Image from "./components/renderImage/Image";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import data from "./assets/tour-data.json";
+
+import "./App.scss";
+
+class App extends React.Component {
+  componentDidMount() {
+    this.setState({ locations: data["destinations"] });
+    this.setState({ seasons: data["seasonCategories"] });
+  }
+
+  state = {
+    locations: {},
+    seasons: {},
+    destination: ""
+  };
+
+  selectDestination = destination => {
+    this.setState({ destination });
+  };
+
+  render() {
+    const { locations, seasons, destination } = this.state;
+
+    let imgObj = {};
+
+    if (destination !== "") {
+      imgObj = this.state.locations.filter(
+        loc => loc.name === this.state.destination
+      );
+    }
+
+    return (
+      <div className="App">
+        <Header />
+        <div className="content">
+          <TourHeader />
+          <Form
+            locations={locations}
+            seasons={seasons}
+            selectDestination={this.selectDestination}
+          />
+          {this.state.destination ? <Image imgObj={imgObj[0]} /> : ""}
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
